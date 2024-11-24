@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidWearTaskManagementApp</string>
+    <string name="time">Time</string>
+    <string name="tasker">Tasker</string>
+    <string name="date_time"><![CDATA[Date & Time]]></string>
+    <string name="due">Due</string>
+    <string name="save">Save</string>
+    <string name="task_name">Task Name</string>
+    <string name="new_task">New Task</string>
+    <string name="show_all">Show All</string>
+</resources>
