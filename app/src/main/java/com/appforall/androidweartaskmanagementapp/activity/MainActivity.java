@@ -2,23 +2,17 @@ package com.appforall.androidweartaskmanagementapp.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.appforall.androidweartaskmanagementapp.R;
+
 import com.appforall.androidweartaskmanagementapp.databinding.ActivityMainBinding;
 import com.appforall.androidweartaskmanagementapp.model.Task;
 import com.appforall.androidweartaskmanagementapp.utils.TaskUtils;
-import com.google.android.gms.common.api.internal.TaskUtil;
 
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -51,11 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             saveToSharedPref();
         }
         if (v.getId() == mainBinding.btnListAll.getId()) {
-         //   showListing();
+            showListing();
         }
     }
 
     private void showListing() {
+        startActivity(new Intent(this, TasksActivity.class));
     }
 
     private void saveToSharedPref() {
