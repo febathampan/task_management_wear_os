@@ -14,21 +14,28 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.appforall.androidweartaskmanagementapp.R;
 import com.appforall.androidweartaskmanagementapp.databinding.ActivityMainBinding;
+import com.appforall.androidweartaskmanagementapp.model.Task;
+import com.appforall.androidweartaskmanagementapp.utils.TaskUtils;
+import com.google.android.gms.common.api.internal.TaskUtil;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ActivityMainBinding mainBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view= mainBinding.getRoot();
+        View view = mainBinding.getRoot();
         setContentView(view);
         init();
     }
-    private void init(){
+
+    private void init() {
         mainBinding.btnSave.setOnClickListener(this);
         mainBinding.btnDateTime.setOnClickListener(this);
         mainBinding.btnListAll.setOnClickListener(this);
@@ -37,9 +44,32 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == mainBinding.btnDateTime.getId()){
+        if (v.getId() == mainBinding.btnDateTime.getId()) {
             showDatePicker();
         }
+        if (v.getId() == mainBinding.btnSave.getId()) {
+            saveToSharedPref();
+        }
+        if (v.getId() == mainBinding.btnListAll.getId()) {
+         //   showListing();
+        }
+    }
+
+    private void showListing() {
+    }
+
+    private void saveToSharedPref() {
+        Task task = new Task(UUID.randomUUID().toString(), mainBinding.edtName.getText().toString(),
+                mainBinding.edtTasker.getText().toString(), mainBinding.txtSelectedDT.getText().toString());
+        TaskUtils.saveTask(task, this);
+        clearAllFields();
+
+    }
+
+    private void clearAllFields() {
+        mainBinding.edtTasker.setText("");
+        mainBinding.edtName.setText("");
+        mainBinding.txtSelectedDT.setText("");
     }
 
     private void showDatePicker() {
