@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class TaskUtils {
+    public final static String DUE = "Due";
+
     public static void saveTask(Task task, Context context) {
         if (task != null) {
             SharedPreferences sharedPreferences = context.getSharedPreferences("task_details", Context.MODE_PRIVATE);

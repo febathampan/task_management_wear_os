@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,17 +55,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void saveToSharedPref() {
-        Task task = new Task(UUID.randomUUID().toString(), mainBinding.edtName.getText().toString(),
-                mainBinding.edtTasker.getText().toString(), mainBinding.txtSelectedDT.getText().toString());
-        TaskUtils.saveTask(task, this);
-        clearAllFields();
+        if(isDataValid()) {
+            Task task = new Task(UUID.randomUUID().toString(), mainBinding.edtName.getText().toString(),
+                    mainBinding.edtTasker.getText().toString(), mainBinding.txtSelectedDT.getText().toString());
+            TaskUtils.saveTask(task, this);
+            clearAllFields();
+        }
 
+    }
+
+    private boolean isDataValid() {
+        if (TextUtils.isEmpty(mainBinding.edtName.getText().toString())) {
+            mainBinding.edtName.setError("Task name required");
+            mainBinding.edtName.requestFocus();
+            return false;
+        }
+        if (TextUtils.isEmpty(mainBinding.edtTasker.getText().toString())) {
+            mainBinding.edtTasker.setError("Tasker name required");
+            mainBinding.edtTasker.requestFocus();
+            return false;
+        }
+        if ( TaskUtils.DUE.equals(mainBinding.txtSelectedDT.getText().toString())) {
+            mainBinding.btnDateTime.setError("Date & Time required");
+            mainBinding.btnDateTime.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void clearAllFields() {
         mainBinding.edtTasker.setText("");
         mainBinding.edtName.setText("");
-        mainBinding.txtSelectedDT.setText("");
+        mainBinding.txtSelectedDT.setText(TaskUtils.DUE);
+        mainBinding.edtName.requestFocus();
     }
 
     private void showDatePicker() {
@@ -83,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String dateTime = dayOfMonth + "/" + (month + 1) + "/" + year +
                         " " + String.format("%02d:%02d", hourOfDay, minute);
                 mainBinding.txtSelectedDT.setText(dateTime);
+                mainBinding.btnDateTime.setError(null);
             }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true).show();
 
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();

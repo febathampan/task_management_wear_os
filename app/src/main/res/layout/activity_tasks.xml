@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="15dp">
-   <!-- tools:context=".activity.TasksActivity"
-    tools:ignore="MissingClass">-->
+    android:padding="15dp"
+    tools:context=".activity.TasksActivity"
+    tools:ignore="MissingClass">
+
     <TextView
         android:id="@+id/txtRwHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="16sp"
         android:text="@string/tasks"
-        android:textStyle="bold"
-         />
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.wear.widget.WearableRecyclerView
-        android:id="@+id/wrcTasks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:scrollbars="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center" />
+        <androidx.wear.widget.WearableRecyclerView
+            android:id="@+id/wrcTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
 </androidx.wear.widget.BoxInsetLayout>

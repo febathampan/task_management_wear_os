@@ -9,77 +9,82 @@
     tools:context=".activity.MainActivity"
     tools:ignore="MissingClass">
 
-    <!-- Add ScrollView here -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/new_task"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/txtRwHead"
+        android:layout_alignParentBottom="true"
         android:fillViewport="true"> <!-- Ensures ScrollView expands to full height -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/new_task" />
 
-        <EditText
-            android:id="@+id/edtName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="@string/task_name"
-            android:imeOptions="actionSend"
-            android:inputType="textCapSentences|textAutoCorrect"
-            android:textColorHint="@color/orange" />
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="@string/task_name"
+                android:imeOptions="actionSend"
+                android:inputType="textCapSentences|textAutoCorrect"
+                android:textColorHint="@color/orange" />
 
-        <EditText
-            android:id="@+id/edtTasker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="@string/tasker"
-            android:imeOptions="actionSend"
-            android:inputType="textCapSentences|textAutoCorrect"
-            android:textColorHint="@color/orange" />
+            <EditText
+                android:id="@+id/edtTasker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="@string/tasker"
+                android:imeOptions="actionSend"
+                android:inputType="textCapSentences|textAutoCorrect"
+                android:textColorHint="@color/orange" />
 
-        <Button
-            android:id="@+id/btnDateTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/date_time" />
+            <Button
+                android:id="@+id/btnDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_time" />
 
-        <TextView
-            android:id="@+id/txtSelectedDT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="@string/due"
-            android:textColor="@color/orange" />
+            <TextView
+                android:id="@+id/txtSelectedDT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/due"
+                android:textColor="@color/orange" />
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/save" />
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save" />
 
-        <Button
-            android:id="@+id/btnListAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/show_all" />
+            <Button
+                android:id="@+id/btnListAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_all" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 </androidx.wear.widget.BoxInsetLayout>
